@@ -18,6 +18,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
                   options.UseMySql(mySqlConnection, 
                     ServerVersion.AutoDetect(mySqlConnection)));
 
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies()); //garanto que tenho todos os assemblies do contexto que vai incluir mapeamento
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
