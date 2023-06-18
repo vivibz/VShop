@@ -25,6 +25,7 @@ namespace VShop.ProductApi.DTOs
         [Range(1,9999)]
         public long Stock { get; set; }
         public string? ImageURL { get; set; }
+        public string? CategoryName { get; set; } //depois tenho que mudar o mapeameto do productDTO na pasta Mappings 
 
         [JsonIgnore]
         public Category? Category { get; set; }
