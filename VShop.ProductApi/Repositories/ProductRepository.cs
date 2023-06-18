@@ -12,9 +12,9 @@ namespace VShop.ProductApi.Repositories
         {
             _context = context;
         }
-        public async Task<IEnumerable<Product>> GetAll()  
+        public async Task<IEnumerable<Product>> GetAll()
         {
-            return await _context.Products.ToListAsync();
+            return await _context.Products.Include(c=> c.Category).ToListAsync();
         }
         public async Task<IEnumerable<Product>> GetCategoriesProducts()
         {
@@ -23,7 +23,7 @@ namespace VShop.ProductApi.Repositories
         public async Task<Product> GetById(int id)
         {
             //abaixo eu quero filtrar as categorias cujo Id é igual ao Id que estou recebendo
-            return await _context.Products.Where(p => p.Id == id).FirstOrDefaultAsync();
+            return await _context.Products.Include(c=> c.Category).Where(p => p.Id == id).FirstOrDefaultAsync();
         }
         public async Task<Product> Create(Product product)
         {
