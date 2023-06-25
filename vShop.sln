@@ -5,7 +5,9 @@ VisualStudioVersion = 17.5.33502.453
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VShop.ProductApi", "VShop.ProductApi\VShop.ProductApi.csproj", "{2403C7FC-3F4A-43D7-BA5E-9C290D0C7E25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VShop.Web", "VShop.Web\VShop.Web.csproj", "{81F6AD4B-07DC-4619-AF9B-D20F0B73BE89}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VShop.Web", "VShop.Web\VShop.Web.csproj", "{81F6AD4B-07DC-4619-AF9B-D20F0B73BE89}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VShop.IdentityServer", "VShop.IdentityServer\VShop.IdentityServer.csproj", "{D31B6F2B-6142-4F92-9757-B5B58C8BE692}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{81F6AD4B-07DC-4619-AF9B-D20F0B73BE89}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81F6AD4B-07DC-4619-AF9B-D20F0B73BE89}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81F6AD4B-07DC-4619-AF9B-D20F0B73BE89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D31B6F2B-6142-4F92-9757-B5B58C8BE692}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D31B6F2B-6142-4F92-9757-B5B58C8BE692}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D31B6F2B-6142-4F92-9757-B5B58C8BE692}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D31B6F2B-6142-4F92-9757-B5B58C8BE692}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
