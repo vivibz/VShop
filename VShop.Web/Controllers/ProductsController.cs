@@ -69,12 +69,33 @@ namespace VShop.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = await _productService.UpdateProduct(productVM); // se tudo estiver ok vou usar micro serviço, e vou atualizar o produto no meu método do productservice
+                var result = await _productService.UpdateProduct(productVM); // se tudo estiver ok vou usar microserviço, e vou atualizar o produto no meu método do productservice
 
 
                 if (result != null) return RedirectToAction(nameof(Index));
             }
             return View(productVM);
         }
+
+        [HttpGet]
+        public async Task<ActionResult<ProductViewModel>> DeleteProduct(int id)//vai apresentar os dados do produto selecionado
+        {
+            var result = await _productService.FindProductById(id);//depois da implemnetação do httpGet e post adiconarr view com botão direito
+
+            if (result is null) return View("Error");
+
+            return View(result);
+        }
+
+        [HttpPost(), ActionName("DeleteProduct")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var result = await _productService.DeleteProductById(id);
+
+            if (!result) return View("Error");
+
+            return RedirectToAction("Index");
+        }
+
     }
 }

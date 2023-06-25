@@ -43,18 +43,13 @@ namespace VShop.ProductApi.Controllers
             return new CreatedAtRouteResult("GetProduct", new { id = productDto.Id }, productDto);
         }
 
-        [HttpPut("{id}")]
-        public async Task<ActionResult> Put(int id, [FromBody] ProductDTO productDto)
+        [HttpPut]
+        public async Task<ActionResult> Put([FromBody] ProductDTO productDto)
         {
-            if (id != productDto.Id)
-            {
-                return BadRequest("Data invalid");
-            }
-
             if (productDto == null) 
                 return BadRequest("Data invalid");
 
-            await _productService.UpdateProduct(productDto);
+            await _productService.UpdateProduct(productDto); //verifica se os dados são validos e faz a atualização do produto
 
             return Ok(productDto);
         }
