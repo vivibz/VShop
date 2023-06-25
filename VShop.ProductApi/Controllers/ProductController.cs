@@ -23,7 +23,7 @@ namespace VShop.ProductApi.Controllers
 
             return Ok(productDto);
         }
-        [HttpGet("{id}", Name ="GetProduct")]
+        [HttpGet("{id}", Name = "GetProduct")]
         public async Task<ActionResult<ProductDTO>> Get(int id)
         {
             var produtoDto = await _productService.GetProductById(id);
@@ -42,6 +42,23 @@ namespace VShop.ProductApi.Controllers
 
             return new CreatedAtRouteResult("GetProduct", new { id = productDto.Id }, productDto);
         }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult> Put(int id, [FromBody] ProductDTO productDto)
+        {
+            if (id != productDto.Id)
+            {
+                return BadRequest("Data invalid");
+            }
+
+            if (productDto == null) 
+                return BadRequest("Data invalid");
+
+            await _productService.UpdateProduct(productDto);
+
+            return Ok(productDto);
+        }
+
         [HttpDelete("{id}")]
         public async Task<ActionResult<ProductDTO>> Delete(int id)
         {

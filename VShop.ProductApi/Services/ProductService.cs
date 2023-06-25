@@ -9,15 +9,15 @@ namespace VShop.ProductApi.Services
     {
         private readonly IProductRepository _productRepository;
         private readonly IMapper _mapper;
-        public ProductService(IProductRepository productRepository, IMapper mapper)
+        public ProductService(IMapper mapper, IProductRepository productRepository)
         {
-            _productRepository = productRepository;
             _mapper = mapper;
+            _productRepository = productRepository;
         }
         public async Task<IEnumerable<ProductDTO>> GetProducts()
         {
-           var productEntity = await _productRepository.GetAll();
-           return _mapper.Map<IEnumerable<ProductDTO>>(productEntity);
+           var productsEntity = await _productRepository.GetAll();
+           return _mapper.Map<IEnumerable<ProductDTO>>(productsEntity);
         }
         public async Task<ProductDTO> GetProductById(int id)
         {
@@ -30,10 +30,10 @@ namespace VShop.ProductApi.Services
             await _productRepository.Create(productEntity);
             productDto.Id = productEntity.Id;
         }
-        public async Task UpdateProduct(CategoryDTO productDto)
+        public async Task UpdateProduct(ProductDTO productDto)
         {
-            var productEntity = _mapper.Map<Product>(productDto);
-            await _productRepository.Update(productEntity);
+            var categoryEntity = _mapper.Map<Product>(productDto);
+            await _productRepository.Update(categoryEntity);
         }
         public async Task RemoveProduct(int id)
         {
