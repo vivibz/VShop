@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Text;
+﻿using System.Text;
 using System.Text.Json;
 using VShop.Web.Models;
 using VShop.Web.Services.Interfaces;
@@ -9,7 +8,7 @@ namespace VShop.Web.Services
     public class ProductService : IProductService
     {// Lembrar de configurar o serviço antes de incrementar os métodos
         private readonly IHttpClientFactory _clientFactory;
-        private const string apiEndpoint = "/api/products";//vai formar com o localhost no appsettings no serviceApi
+        private const string apiEndpoint = "/api/Product/";//vai formar com o localhost no appsettings no serviceApi
         private readonly JsonSerializerOptions _options;
         private ProductViewModel productVM; //aqui um product
         private IEnumerable<ProductViewModel> productsVM; // aqui uma lista de products

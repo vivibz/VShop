@@ -7,7 +7,7 @@ namespace VShop.ProductApi.Services
         Task<IEnumerable<ProductDTO>> GetProducts();
         Task<ProductDTO> GetProductById(int id);
         Task AddProduct(ProductDTO productDto);
-        Task UpdateProduct(CategoryDTO productDto);
+        Task UpdateProduct(ProductDTO productDto);
         Task RemoveProduct(int id);
     }
 }

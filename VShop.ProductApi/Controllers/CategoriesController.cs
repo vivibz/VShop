@@ -18,10 +18,9 @@ namespace VShop.ProductApi.Controllers
         public async Task <ActionResult<IEnumerable<CategoryDTO>>> Get() //estamos definindo primeiro o retorno das categorias
         { //Vou retornar oq? Um lista de categorias categoriesDto, o categoryService é atráves dele que acesso os métódos do repositório
             var categoriesDto = await _categoryService.GetCategories();
-            if (categoriesDto == null)
-            {
+            if (categoriesDto is null)
                 return NotFound("Categories not found");
-            }
+            
             return Ok(categoriesDto);
         }
         [HttpGet("products")]
@@ -37,12 +36,12 @@ namespace VShop.ProductApi.Controllers
         [HttpGet("{id:int}", Name = "GetCategory")]
         public async Task<ActionResult<CategoryDTO>> GetByIdCategorie( int id)
         {
-            var categoriesDto = await _categoryService.GetCategoriesById(id);
-            if (categoriesDto == null)
+            var categoryDto = await _categoryService.GetCategoriesById(id);
+            if (categoryDto == null)
             {
                 return NotFound("Categories not found");
             }
-            return Ok(categoriesDto);
+            return Ok(categoryDto);
         }
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] CategoryDTO categoryDto) //FromBody significa que estou passando no body do request os dados da categoria que estou incluindo
@@ -61,7 +60,7 @@ namespace VShop.ProductApi.Controllers
             if(id != categoryDto.CategoryId)
                 return BadRequest();
 
-            if (categoryDto == null)
+            if (categoryDto is null)
                 return BadRequest();
 
             await _categoryService.UpdateCategory(categoryDto);
@@ -71,7 +70,7 @@ namespace VShop.ProductApi.Controllers
         public async Task<ActionResult<CategoryDTO>> Delete(int id)
         {
             var categoryDto = await _categoryService.GetCategoriesById(id);
-            if (categoryDto == null)
+            if (categoryDto is null)
                 return NotFound("Category not found");
 
             await _categoryService.RemoveCategory(id);
